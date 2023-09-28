@@ -1,0 +1,32 @@
+.navbar-expand-sm{
+    justify-content: space-around;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    .navbar-brand {
+        font-size: 40px;
+    }
+    .menu{
+        float: right;
+        ul{
+            li{
+                a{
+                    margin: 0 40px;
+                    font-size: 20px;
+                    color: #fff;
+                    &:hover{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    .search{
+        input{
+            width: 200px;
+            height: 30px;
+        }
+    }
+
+}
