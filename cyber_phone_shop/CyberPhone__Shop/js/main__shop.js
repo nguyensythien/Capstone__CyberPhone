@@ -243,7 +243,7 @@ const renderCartTable = (dataRender) => {
             </div>
 
             <div class="cart-style" id="td__Del">
-                <button><i class="fa fa-trash"></i></button>
+                <button onclick="delProFrCart(${cartItem.id})"><i class="fa fa-trash"></i></button>
             </div>
 
         </div>
@@ -262,3 +262,19 @@ const cartTotal = (mathData)=>{
     getElm('#cartTotal').innerHTML =`<h3>Total: ${total}</h3>`
 }
 
+// ----------------DELETE PRODUCT AWAY FROM CART-----------------
+
+window.delProFrCart = (id) =>{
+    const promise = axios({
+        method: 'DELETE',
+        url: `https://651d71e144e393af2d59cdfb.mockapi.io/cartItem/${id}`
+    })
+    promise
+    .then((result)=>{
+        console.log(result);
+        getCartItemList()
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
