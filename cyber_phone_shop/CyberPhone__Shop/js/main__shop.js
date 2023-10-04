@@ -278,3 +278,4 @@ window.delProFrCart = (id) =>{
         console.log(err);
     })
 }
+

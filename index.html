@@ -44,37 +44,76 @@
 <section class="admin__Body">
   <!-- ----------PRODUCT TABLE---------- -->
   <div class="product__table table-responsive">
-    <!-- <button onclick="" id="btnThem" type="button" class="btn btn-warning mb-3 text-white" data-toggle="modal"
-    data-target="#exampleModal">
+    <button onclick="openProductForm()" id="btnThem" type="button" class="btn btn-warning mb-3 text-white" >
     Thêm Sản Phẩm
-  </button> -->
-    <table class="table table-striped table-sm">
+  </button>
+    <table class="table table-striped table-sm tablePhone">
       <thead>
-        <tr class="bg-warning text-white theaderPhone">
-          <th>id</th>
-          <th>name</th>
-          <th>price</th>
-          <th>screen</th>
-          <th>backCamera</th>
-          <th>frontCamera</th>
-          <th>img</th>
-          <th>desc</th>
-          <th>type</th>
+        <tr class=" text-white theaderPhone">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Screen</th>
+          <th>BackCamera</th>
+          <th>FrontCamera</th>
+          <th>Img</th>
+          <th>Desc</th>
+          <th>Type</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody id="tbodyPhone">
+        <tr class=" text-white theaderPhone">
+          <th>Id</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Screen</th>
+          <th>BackCamera</th>
+          <th>FrontCamera</th>
+          <th>Img</th>
+          <th>Desc</th>
+          <th>Type</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr> <tr class=" text-white theaderPhone">
+          <th>Id</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Screen</th>
+          <th>BackCamera</th>
+          <th>FrontCamera</th>
+          <th>Img</th>
+          <th>Desc</th>
+          <th>Type</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+                </tr> <tr class=" text-white theaderPhone">
+          <th>Id</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Screen</th>
+          <th>BackCamera</th>
+          <th>FrontCamera</th>
+          <th>Img</th>
+          <th>Desc</th>
+          <th>Type</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <!------------ ADD PRODUCT FORM------------>
-  <div class=" fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-    style="display: block;" aria-modal="true" role="dialog">
+  <div class="fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    style="display: none;" aria-modal="true" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Thêm Sản Phẩm</h5>
-          <button onclick="" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button onclick="closeProductForm()" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
@@ -137,7 +176,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button onclick="closeProductForm()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-warning" id="btnCapNhat">Cập Nhật</button>
           <button type="button" class="btn btn-warning" id="btnThemMon">Thêm</button>
         </div>

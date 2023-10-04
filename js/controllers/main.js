@@ -1,8 +1,17 @@
 console.log('sada');
 
+// ----------OPEN PRODUCT FORM---------------
 
+window.openProductForm = ()=>{
+    document.getElementById('exampleModal').style.display = 'block'
+    document.getElementById('exampleModal').classList ='show'
+}
+// ----------CLOSE PRODUCT FORM---------------
 
-
+window.closeProductForm = ()=>{
+    document.getElementById('exampleModal').style.display = 'none'
+    document.getElementById('exampleModal').classList =''
+}
 
 
 
