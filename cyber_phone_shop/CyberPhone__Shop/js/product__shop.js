@@ -13,12 +13,11 @@ class Products{
     }
 }
 class cartItem{
-    constructor(id, img, name, number, price)
+    constructor(id, img, name, price)
     {   
         this.id = id,
         this.img = img,
         this.name = name,
-        this.number = number,
         this.price = price
     }
 }

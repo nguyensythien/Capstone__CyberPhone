@@ -65,7 +65,7 @@ const renderTable = (productList) => {
                 <div class="bot__Price">
                     <p>$${product.price}</p>
                 </div>
-                <button id="${product.id}">ADD</button>
+                <button onclick="getProductsInfor(${product.id})">ADD</button>
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@ const renderFillTable = (productList) =>{
                <div class="bot__Price">
                    <p>$${product.price}</p>
                </div>
-               <button id="${product.id}">ADD</button>
+               <button onclick="getProductsInfor(${product.id})">ADD</button>
            </div>
        </div>
    </div>
@@ -147,52 +147,89 @@ window.cyberPhone__Fill = () => {
         })
 }
 
+// ----------------GET AND POST DATA TO API---------------
 
-
-const getCartList = () => {
+window.getProductsInfor = (id) => {
+    
     const promise = axios({
         method: 'GET',
-        url: 'https://6512e424b8c6ce52b3966bc0.mockapi.io/thienFood',
+        url: `https://6512e424b8c6ce52b3966bc0.mockapi.io/thienFood/${id}`,
     })
 
     promise
         .then((result) => {
-            getCardItem(result.data)
+           newCartItem(result.data)
+           getCartItemList()
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        
+}
+
+const newCartItem = (cartItemInfor) =>{
+    let cartItemDetail = new cartItem(
+        cartItemInfor.id,
+        cartItemInfor.img,
+        cartItemInfor.name,
+        cartItemInfor.price
+        )
+        postCartItemData(cartItemDetail)
+}
+
+
+
+const postCartItemData = (PutData) => {
+    const promise = axios({
+        method: 'POST',
+        url: 'https://651d71e144e393af2d59cdfb.mockapi.io/cartItem',
+        data:
+            PutData
+        
+    })
+    promise
+    .then((result)=>{
+        console.log(result);
+        getCartItemList()
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
+// ---------------------------------------------------------
+// -------------RENDER DATA FROM API AFTER POST --------
+
+const getCartItemList = ()=>{
+    const promise = axios({
+        method: 'GET',
+        url: 'https://651d71e144e393af2d59cdfb.mockapi.io/cartItem',
+    })
+
+    promise
+        .then((result) => {
+            renderCartTable(result.data)
+            cartTotal(result.data)
         })
         .catch((err) => {
             console.log(err);
         })
 }
-getCartList()
 
-const getCardItem = (CartList) =>{
-    let cardList =[]
-    let cardItem = {}
-    CartList.forEach((item, index) => {
-        cardItem = new cartItem(item.id, item.img, item.name, item.number, item.price)
-        cardList.push(cardItem)
-        return cardList
-    })
-    console.log(cardList);
-    renderCartItem(cardList)
-}
+getCartItemList()
 
-
-const renderCartItem = (CartItemArr) => {
-    let htmlCartContent = ''
-    let fillValue = getElm('#proFilter').value
-    CartItemArr.forEach((cardTr, id) =>{
-        if(cardTr.name === 'iphoneX'){
-            htmlCartContent +=
+const renderCartTable = (dataRender) => {
+    let htmlCartContent = '';
+    dataRender.forEach((cartItem) => {
+        htmlCartContent +=
             `
-            <div  class="cart__PrList">
+            <div class="cart__PrList">
 
             <div class="cart-style" id="td__img">
-                <img src="${cardTr.img}" alt="">
+                <img src="${cartItem.img}" alt="">
             </div>
 
             <div class="cart-style" id="td__ProName">
-                <p>${cardTr.name}</p>
+                <p>${cartItem.name}</p>
             </div>
 
             <div class="cart-style" id="td__Number">
@@ -202,7 +239,7 @@ const renderCartItem = (CartItemArr) => {
             </div>
 
             <div class="cart-style" id="td__Price">
-                <p>$${cardTr.price}</p>
+                <p>$${cartItem.price}</p>
             </div>
 
             <div class="cart-style" id="td__Del">
@@ -210,8 +247,18 @@ const renderCartItem = (CartItemArr) => {
             </div>
 
         </div>
-            `
-        }
-    })
+    `
+    });
+
     getElm('#cart__bodyID').innerHTML = htmlCartContent
 }
+
+const cartTotal = (mathData)=>{
+    let total = 0
+    mathData.forEach((data)=>{
+        total += data.price
+    })
+    console.log(total);
+    getElm('#cartTotal').innerHTML =`<h3>Total: ${total}</h3>`
+}
+
