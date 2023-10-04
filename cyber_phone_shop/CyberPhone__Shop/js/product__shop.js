@@ -12,16 +12,15 @@ class Products{
         this.type = type
     }
 }
-
-
 class cartItem{
-    constructor(img, name, number, price)
-    {
-        this.img,
-        this.name,
-        this.number,
-        this.price
+    constructor(id, img, name, number, price)
+    {   
+        this.id = id,
+        this.img = img,
+        this.name = name,
+        this.number = number,
+        this.price = price
     }
 }
-
+export {cartItem}
 export default Products

@@ -1,7 +1,7 @@
 // IMPORT PRODUCT
 
 import Products from './product__shop.js';
-import cartItem from './product__shop.js';
+import {cartItem} from './product__shop.js';
 
 // GET EML
 const getElm = (selector) => document.querySelector(selector);
@@ -17,7 +17,6 @@ const getProductsList = () => {
 
     promise
         .then((result) => {
-            console.log(result.data);
             renderTable(result.data)
         })
         .catch((err) => {
@@ -141,9 +140,7 @@ window.cyberPhone__Fill = () => {
 
     promise
         .then((result) => {
-            console.log(result.data);
             renderFillTable(result.data)
-
         })
         .catch((err) => {
             console.log(err);
@@ -151,13 +148,70 @@ window.cyberPhone__Fill = () => {
 }
 
 
-// const cart1 = new cartItem('123', 'thien', 5, 1000)
-// console.log(cart1);
 
-const itemList = {}
-window.pushItem = () =>{
+const getCartList = () => {
     const promise = axios({
-        method: 'PUT',
-        url: 'https://6512e424b8c6ce52b3966bc0.mockapi.io/item'
+        method: 'GET',
+        url: 'https://6512e424b8c6ce52b3966bc0.mockapi.io/thienFood',
     })
+
+    promise
+        .then((result) => {
+            getCardItem(result.data)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+getCartList()
+
+const getCardItem = (CartList) =>{
+    let cardList =[]
+    let cardItem = {}
+    CartList.forEach((item, index) => {
+        cardItem = new cartItem(item.id, item.img, item.name, item.number, item.price)
+        cardList.push(cardItem)
+        return cardList
+    })
+    console.log(cardList);
+    renderCartItem(cardList)
+}
+
+
+const renderCartItem = (CartItemArr) => {
+    let htmlCartContent = ''
+    let fillValue = getElm('#proFilter').value
+    CartItemArr.forEach((cardTr, id) =>{
+        if(cardTr.name === 'iphoneX'){
+            htmlCartContent +=
+            `
+            <div  class="cart__PrList">
+
+            <div class="cart-style" id="td__img">
+                <img src="${cardTr.img}" alt="">
+            </div>
+
+            <div class="cart-style" id="td__ProName">
+                <p>${cardTr.name}</p>
+            </div>
+
+            <div class="cart-style" id="td__Number">
+                <button><i class="fa fa-angle-left"></i></button>
+                <p>1</p>
+                <button><i class="fa fa-chevron-right"></i></button>
+            </div>
+
+            <div class="cart-style" id="td__Price">
+                <p>$${cardTr.price}</p>
+            </div>
+
+            <div class="cart-style" id="td__Del">
+                <button><i class="fa fa-trash"></i></button>
+            </div>
+
+        </div>
+            `
+        }
+    })
+    getElm('#cart__bodyID').innerHTML = htmlCartContent
 }
