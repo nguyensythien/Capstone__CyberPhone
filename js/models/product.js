@@ -1,22 +1,21 @@
 function Product(
-    _id,
-    _name,
-    _price,
-    _screen,
-    _backCamera,
-    _frontCamera,
-    _img,
-    _desc,
-    _type
-  ) {
-    this.idPhone = _id;
-    this.namePhone = _name;
-    this.pricePhone = _price;
-    this.screenPhone = _screen;
-    this.backCameraPhone = _backCamera;
-    this.frontCameraPhone = _frontCamera;
-    this.imgPhone = _img;
-    this.descPhone = _desc;
-    this.typePhone = _type;
-  }
-  
+  _id,
+  _name,
+  _price,
+  _screen,
+  _backCamera,
+  _frontCamera,
+  _img,
+  _desc,
+  _type
+) {
+  this.id = _id;
+  this.name = _name;
+  this.price = _price;
+  this.screen = _screen;
+  this.backCamera = _backCamera;
+  this.frontCamera = _frontCamera;
+  this.img = _img;
+  this.desc = _desc;
+  this.type = _type;
+}

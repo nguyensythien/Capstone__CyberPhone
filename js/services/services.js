@@ -1,4 +1,4 @@
-const BASE_URL = "https://65181ce5582f58d62d35667a.mockapi.io/productPhone";
+const BASE_URL = "https://6512e424b8c6ce52b3966bc0.mockapi.io/thienFood";
 function getProductList(name) {
   return axios({
     url: BASE_URL,
