@@ -160,8 +160,7 @@
                 <div class="form-group">
                   <label >Product Type</label>
                   <select class="custom-select" id="productType">
-                    <option selected>Chọn loại</option>
-                    <option value="all">Tất cả</option>
+                    <option value="" selected>Chọn loại</option>
                     <option value="SamSung">SamSung</option>
                     <option value="Iphone">Iphone</option>
                   </select>
@@ -176,9 +175,9 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button onclick="closeProductForm()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-warning" id="btnCapNhat">Cập Nhật</button>
-          <button type="button" class="btn btn-warning" id="btnThemMon">Thêm</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeProductForm()">Close</button>
+          <button type="button" class="btn btn-warning" id="btnCapNhat" onclick="productUpdate()">Cập Nhật</button>
+          <button type="button" class="btn btn-warning" id="btnThemMon" onclick="productAddition()">Thêm</button>
         </div>
       </div>
     </div>
@@ -244,7 +243,11 @@
     integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- ---------  ADD MAIN JS  ----------- -->
-    <script type="module" src="./js/controllers/main.js"></script>
+    <script src="./js/validation/validation.js"></script>
+    <script src="./js/models/product.js"></script>
+    <script src="./js/services/services.js"></script>
+    <script src="./js/controllers/controller.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
