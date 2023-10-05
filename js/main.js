@@ -51,8 +51,8 @@ function productUpdate() {
   var check = true;
   if (check) {
     updateProduct(
-      getProductionInformation().id,
-      getProductionInformation()
+      product.id,
+      product
     ).then(() => {
       fetchProductList();
       closeProductForm();
